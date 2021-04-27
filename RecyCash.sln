@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecyCash", "RecyCash\RecyCash.csproj", "{B1C5E115-9D09-4445-A734-D7DC9C0E79D6}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RecyCashSQL", "RecyCashSQL\RecyCashSQL.sqlproj", "{3B6D150D-6304-45C7-9B1A-F06D7076ABDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1C5E115-9D09-4445-A734-D7DC9C0E79D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1C5E115-9D09-4445-A734-D7DC9C0E79D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1C5E115-9D09-4445-A734-D7DC9C0E79D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1C5E115-9D09-4445-A734-D7DC9C0E79D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6D150D-6304-45C7-9B1A-F06D7076ABDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6D150D-6304-45C7-9B1A-F06D7076ABDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6D150D-6304-45C7-9B1A-F06D7076ABDC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3B6D150D-6304-45C7-9B1A-F06D7076ABDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6D150D-6304-45C7-9B1A-F06D7076ABDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6D150D-6304-45C7-9B1A-F06D7076ABDC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDB17603-9421-46E7-BBE5-858ADA7207D6}
+	EndGlobalSection
+EndGlobal
