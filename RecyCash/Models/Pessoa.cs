@@ -59,10 +59,5 @@ namespace RecyCash.Models
 
         [Column("VL_LONGITUDE")]
         public string Longitude { get; set; }
-
-        //[ForeignKey("Codigo")]
-        //public virtual PessoaFisica PessoaFisica { get; set; }
-        //[ForeignKey("Codigo")]
-        //public virtual PessoaJuridica PessoaJuridica { get; set; }
     }
 }
