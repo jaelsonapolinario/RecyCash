@@ -3,7 +3,7 @@
     [NM_NOME]        NVARCHAR (250) NOT NULL,
     [DS_EMAIL]       NVARCHAR (250) NOT NULL,
     [VL_SENHA]       NVARCHAR (250) NOT NULL,
-    [TP_TIPO]        BIT            NOT NULL,
+    [TP_TIPO]        INT            NOT NULL,
     [DS_LOGRADOURO]  NVARCHAR (250) NOT NULL,
     [DS_NUMERO]      NVARCHAR (50)  NOT NULL,
     [DS_COMPLEMENTO] NVARCHAR (250) NULL,
