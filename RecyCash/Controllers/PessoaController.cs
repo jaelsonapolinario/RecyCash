@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RecyCash.DAL;
 using RecyCash.Models;
@@ -15,11 +13,12 @@ namespace RecyCash.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class PessoaJuridicaController : Controller
+    public class PessoaController : Controller
     {
         private readonly MyDbContext _context;
-        private readonly ILogger<PessoaJuridicaController> _logger;
-        public PessoaJuridicaController(ILogger<PessoaJuridicaController> logger, MyDbContext context)
+        private readonly ILogger<PessoaController> _logger;
+
+        public PessoaController(ILogger<PessoaController> logger, MyDbContext context)
         {
             _logger = logger;
             _context = context;
@@ -27,12 +26,12 @@ namespace RecyCash.Controllers
 
         // GET: values
         [HttpGet]
-        public ActionResult<IEnumerable<PessoaJuridica>> Get()
+        public ActionResult<IEnumerable<Pessoa>> Get()
         {
-            var list = new List<PessoaJuridica>();
+            var list = new List<Pessoa>();
             try
             {
-                list = _context.PessoaJuridica.Include(x => x.Pessoa).ToList();
+                list = _context.Pessoa.ToList();
             }
             catch (Exception ex)
             {
@@ -46,11 +45,11 @@ namespace RecyCash.Controllers
         [HttpGet("{codigo}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<PessoaJuridica> Get(int codigo)
+        public ActionResult<Pessoa> Get(int codigo)
         {
             try
             {
-                var entity = _context.PessoaJuridica.Include(x => x.Pessoa).FirstOrDefault(x => x.CdPessoa == codigo);
+                var entity = _context.Pessoa.FirstOrDefault(x => x.Codigo == codigo);
                 if (entity != null)
                     return entity;
                 else
@@ -67,16 +66,13 @@ namespace RecyCash.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<PessoaJuridica> Post([FromBody] PessoaJuridica value)
+        public ActionResult<Pessoa> Post([FromBody] Pessoa value)
         {
             try
             {
-                if (value.Pessoa != null)
-                    value.Pessoa.Tipo = Models.Enums.PessoaTipo.JURIDICA;
-
-                _context.PessoaJuridica.Add(value);
+                _context.Pessoa.Add(value);
                 _context.SaveChanges();
-                return CreatedAtAction(nameof(Get), new { codigo = value.CdPessoa }, value);
+                return CreatedAtAction(nameof(Get), new {codigo = value}, value);
             }
             catch (Exception ex)
             {
@@ -90,18 +86,10 @@ namespace RecyCash.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<PessoaJuridica> Put(int codigo, [FromBody] PessoaJuridica value)
+        public ActionResult<Pessoa> Put(int codigo, [FromBody] Pessoa value)
         {
             try
             {
-                value.CdPessoa = codigo;
-                if (value.Pessoa != null)
-                {
-                    value.Pessoa.Codigo = codigo;
-                    value.Pessoa.Tipo = Models.Enums.PessoaTipo.JURIDICA;
-                    _context.Entry(value.Pessoa).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                }
-
                 _context.Entry(value).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _context.SaveChanges();
                 return Ok(value);
@@ -119,12 +107,11 @@ namespace RecyCash.Controllers
         {
             try
             {
-                var entity = _context.PessoaJuridica.Include(x => x.Pessoa).FirstOrDefault(x => x.CdPessoa == codigo);
+                var entity = _context.Pessoa
+                    .FirstOrDefault(x => x.Codigo == codigo);
+                
                 if (entity != null)
                 {
-                    if (entity.Pessoa != null)
-                        _context.Entry(entity.Pessoa).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-
                     _context.Entry(entity).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
                     _context.SaveChanges();
                 }

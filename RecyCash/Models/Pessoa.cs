@@ -26,38 +26,5 @@ namespace RecyCash.Models
         [Required]
         [Column("VL_SENHA")]
         public string Senha { get; set; }
-
-        [Required]
-        [Column("TP_TIPO")]
-        public PessoaTipo Tipo { get; set; }
-
-        [Required]
-        [Column("DS_LOGRADOURO")]
-        public string Logradouro { get; set; }
-
-        [Required]
-        [Column("DS_NUMERO")]
-        public string Numero { get; set; }
-
-        [Column("DS_COMPLEMENTO")]
-        public string Complemento { get; set; }
-
-        [Required]
-        [Column("DS_CIDADE")]
-        public string Cidade { get; set; }
-
-        [Required]
-        [Column("DS_ESTADO")]
-        public string Estado { get; set; }
-
-        [Required]
-        [Column("VL_CEP")]
-        public string Cep { get; set; }
-
-        [Column("VL_LATITUDE")]
-        public string Latitude { get; set; }
-
-        [Column("VL_LONGITUDE")]
-        public string Longitude { get; set; }
     }
 }
