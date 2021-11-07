@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -26,6 +27,7 @@ namespace RecyCash.Controllers
 
         // GET: values
         [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<Coleta>> Get()
         {
             var list = new List<Coleta>();
@@ -45,6 +47,7 @@ namespace RecyCash.Controllers
         [HttpGet("{codigo}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize]
         public ActionResult<Coleta> Get(int codigo)
         {
             try
@@ -68,6 +71,7 @@ namespace RecyCash.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize]
         public ActionResult<Coleta> Post([FromBody] Coleta value)
         {
             try
@@ -90,6 +94,7 @@ namespace RecyCash.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize]
         public ActionResult<Coleta> Put(int codigo, [FromBody] Coleta value)
         {
             try
@@ -108,6 +113,7 @@ namespace RecyCash.Controllers
 
         // DELETE values/5
         [HttpDelete("{codigo}")]
+        [Authorize]
         public void Delete(int codigo)
         {
             try

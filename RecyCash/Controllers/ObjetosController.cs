@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,6 +27,7 @@ namespace RecyCash.Controllers
       
         // GET: <ObjetosController>
         [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<Objeto>> Get()
         {
             var list = new List<Objeto>();
@@ -45,6 +47,7 @@ namespace RecyCash.Controllers
         [HttpGet("{codigo}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize]
         public ActionResult<Objeto> Get(int codigo)
         {
             try
@@ -66,6 +69,7 @@ namespace RecyCash.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize]
         public ActionResult<Objeto> Post([FromBody] Objeto value)
         {
             try
@@ -86,6 +90,7 @@ namespace RecyCash.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize]
         public ActionResult<Objeto> Put(int codigo, [FromBody] Objeto value)
         {
             try
@@ -104,6 +109,7 @@ namespace RecyCash.Controllers
 
         // DELETE <ObjetosController>/5
         [HttpDelete("{codigo}")]
+        [Authorize]
         public void Delete(int codigo)
         {
             try
