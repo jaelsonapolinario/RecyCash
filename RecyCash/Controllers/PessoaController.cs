@@ -74,6 +74,10 @@ namespace RecyCash.Controllers
         {
             try
             {
+                var entity = _context.Pessoa.FirstOrDefault(x => x.Email == value.Email);
+                if(entity != null)
+                    return BadRequest(new { message = "E-mail já cadastrado." });
+                    
                 _context.Pessoa.Add(value);
                 _context.SaveChanges();
                 return CreatedAtAction(nameof(Get), new {codigo = value}, value);
